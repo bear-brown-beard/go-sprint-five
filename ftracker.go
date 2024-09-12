@@ -100,9 +100,9 @@ const (
 // duration float64 — длительность тренировки в часах.
 // weight float64 — вес пользователя.
 // height float64 — рост пользователя.
-func WalkingSpentCalories(lengthPool, countPool, action int, duration, weight, height float64) float64 {
+func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
     // ваш код здесь
-    walkingCalories := ((walkingCaloriesWeightMultiplier * weight + (math.Pow(swimmingMeanSpeed(lengthPool, countPool, duration), 2.0) / height) * walkingSpeedHeightMultiplier * weight) * duration * minInH)
+    walkingCalories := ((walkingCaloriesWeightMultiplier * weight + (math.Pow(meanSpeed(action, duration), 2.0) / (height / 100)) * walkingSpeedHeightMultiplier * weight) * duration * minInH)
     return walkingCalories
 }
 
