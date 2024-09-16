@@ -90,7 +90,6 @@ func RunningSpentCalories(action int, weight, duration float64) float64 {
 const (
 	walkingCaloriesWeightMultiplier = 0.035 // множитель массы тела.
 	walkingSpeedHeightMultiplier    = 0.029 // множитель роста.
-	cmInmeter                       = 100
 )
 
 // WalkingSpentCalories возвращает количество потраченных калорий при ходьбе.
@@ -104,7 +103,7 @@ const (
 func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
 	// ваш код здесь
 	speedKmch := meanSpeed(action, duration) * kmhInMsec
-	walkingCalories := ((walkingCaloriesWeightMultiplier*weight + (math.Pow(speedKmch, 2.0)/(height/cmInmeter))*walkingSpeedHeightMultiplier*weight) * duration * minInH)
+	walkingCalories := ((walkingCaloriesWeightMultiplier*weight + (math.Pow(speedKmch, 2.0)/(height/cmInM))*walkingSpeedHeightMultiplier*weight) * duration * minInH)
 	return walkingCalories
 }
 
